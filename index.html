@@ -1,12 +1,43 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-<title>転送</title>
-<meta http-equiv="refresh" content="0;url=https://mep0mep0mip0mip0.i-i.f5.si/index/">
-</head>
-
-<body>
-<br>
-</body>
-
-</html>
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>サイトマップ</title> 
+</head> 
+<body> 
+<h1>Sitemap URLs</h1> 
+<ul id="urls"></ul> 
+ 
+<script> 
+  const url = "https://mep0mep0mip0mip0.i-i.f5.si/sitemap.xml"; 
+ 
+  fetch(url) 
+    .then(response => response.text()) 
+    .then(xml => { 
+      const parser = new DOMParser(); 
+      const xmlDoc = parser.parseFromString(xml, "text/xml"); 
+ 
+      const urls = xmlDoc.querySelectorAll("url loc"); 
+      const urlList = document.getElementById("urls"); 
+ 
+      urls.forEach(urlElement => { 
+        const url = urlElement.textContent; 
+        fetch(url) 
+          .then(response => response.text()) 
+          .then(html => { 
+            const parser = new DOMParser(); 
+            const htmlDoc = parser.parseFromString(html, "text/html"); 
+            const title = htmlDoc.querySelector("title").textContent; 
+            const listItem = document.createElement("li"); 
+            listItem.innerHTML = ` 
+              <a href="${url}">${title}</a> 
+            `; 
+            urlList.appendChild(listItem); 
+          }); 
+      }); 
+    }) 
+    .catch(error => { 
+      console.error("Error fetching sitemap:", error); 
+    }); 
+</script> 
+</body> 
+</html> 
