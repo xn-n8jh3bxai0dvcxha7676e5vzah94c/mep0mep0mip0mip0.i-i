@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>サイトマップ</title> 
+    <title>サイトマップ</title>
     <style>
         body {
             margin: 0;
             font-family: sans-serif;
         }
-        
+
         .sidebar {
             background-color: #f0f0f0;
             width: 100%;
@@ -19,33 +19,33 @@
             top: 0;
             padding: 10px;
         }
-        
+
         .sidebar h2 {
             margin-top: 0;
             line-height: 4vh; /* サイドバー内のh2タグに適用 */
         }
-        
+
         .sidebar ul {
             list-style: none;
             padding: 0;
             display: flex;
         }
-        
+
         .sidebar li {
             margin-right: 10px;
         }
-        
+
         .sidebar a {
             text-decoration: none;
             color: #333;
             padding: 10px;
             border-radius: 5px;
         }
-        
+
         .sidebar a:hover {
             background-color: #ddd;
         }
-        
+
         .bydyrahabqbbba {
             margin-top: 4vh; /* 上部に4vhのマージンを追加 */
         }
@@ -58,42 +58,40 @@
         </ul>
     </div>
     <div class="bydyrahabqbbba">
-        
-<ul id="urls"></ul> 
- 
-<script> 
-  const url = "https://mep0mep0mip0mip0.i-i.f5.si/sitemap.xml"; 
- 
-  fetch(url) 
-    .then(response => response.text()) 
-    .then(xml => { 
-      const parser = new DOMParser(); 
-      const xmlDoc = parser.parseFromString(xml, "text/xml"); 
- 
-      const urls = xmlDoc.querySelectorAll("url loc"); 
-      const urlList = document.getElementById("urls"); 
- 
-      urls.forEach(urlElement => { 
-        const url = urlElement.textContent; 
-        fetch(url) 
-          .then(response => response.text()) 
-          .then(html => { 
-            const parser = new DOMParser(); 
-            const htmlDoc = parser.parseFromString(html, "text/html"); 
-            const title = htmlDoc.querySelector("title").textContent; 
-            const listItem = document.createElement("li"); 
-            listItem.innerHTML = ` 
-              <a href="${url}">${title}</a> 
-            `; 
-            urlList.appendChild(listItem); 
-          }); 
-      }); 
-    }) 
-    .catch(error => { 
-      console.error("Error fetching sitemap:", error); 
-    }); 
-</script> 
- <p>mep0mep0mip0mip0さんに感謝!</p>
+        <ul id="urls"></ul>
+        <script>
+            const url = "https://mep0mep0mip0mip0.i-i.f5.si/sitemap.xml";
+
+            fetch(url)
+            .then(response => response.text())
+            .then(xml => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xml, "text/xml");
+
+                const urls = xmlDoc.querySelectorAll("url loc");
+                const urlList = document.getElementById("urls");
+
+                urls.forEach(urlElement => {
+                    const url = urlElement.textContent;
+                    fetch(url)
+                    .then(response => response.text())
+                    .then(html => {
+                        const parser = new DOMParser();
+                        const htmlDoc = parser.parseFromString(html, "text/html");
+                        const title = htmlDoc.querySelector("title").textContent;
+                        const listItem = document.createElement("li");
+                        listItem.innerHTML = `
+                            <a href="${url}">${title}</a>
+                        `;
+                        urlList.appendChild(listItem);
+                    });
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching sitemap:", error);
+            });
+        </script>
+        <p>mep0mep0mip0mip0さんに感謝!</p>
     </div>
 </body>
 </html>
