@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
     <title>サイトマップ</title>
     <style>
         body {
@@ -29,6 +28,7 @@
             list-style: none;
             padding: 0;
             display: flex;
+            align-items: center; /* アイテムを垂直に中央揃え */
         }
 
         .sidebar li {
@@ -46,15 +46,20 @@
             background-color: #ddd;
         }
 
+        .sidebar p {
+            margin: 0; /* pタグのデフォルトマージンをリセット */
+            line-height: 4vh; /* サイドバー内のテキストを中央揃え */
+        }
+
         .bydyrahabqbbba {
-            margin-top: 4vh; /* 上部に4vhのマージンを追加 */
+            margin-top: 6vh; /* サイドバーの高さを考慮し、マージンを増やす */
         }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <ul>
-            <li><a href="#">site map</a></li>
+            <li><p><a href="https://scratch.mit.edu/users/name-y/">@name-y</a>によってアーガイブされたページ</p></li>
         </ul>
     </div>
     <div class="bydyrahabqbbba">
